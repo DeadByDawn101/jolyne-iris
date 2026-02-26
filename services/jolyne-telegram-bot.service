@@ -1,0 +1,18 @@
+[Unit]
+Description=Jolyne Iris Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ravenx
+WorkingDirectory=/opt/ravenx
+ExecStart=/usr/bin/python3 /opt/ravenx/jolyne_telegram_bot.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/ravenx/logs/telegram.log
+StandardError=append:/opt/ravenx/logs/telegram-error.log
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/opt/ravenx/.env
+
+[Install]
+WantedBy=multi-user.target

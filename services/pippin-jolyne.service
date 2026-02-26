@@ -1,0 +1,18 @@
+[Unit]
+Description=Pippin Jolyne - RavenX AI X Agent
+After=network.target
+
+[Service]
+Type=simple
+User=ravenx
+WorkingDirectory=/opt/ravenx/pippin/my_digital_being
+ExecStart=/opt/ravenx/pippin/.venv/bin/python -m framework.main
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/ravenx/logs/pippin.log
+StandardError=append:/opt/ravenx/logs/pippin-error.log
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/opt/ravenx/pippin/my_digital_being/.env
+
+[Install]
+WantedBy=multi-user.target
